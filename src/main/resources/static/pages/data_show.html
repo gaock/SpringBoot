@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据展示</title>
+    <script type="text/javascript" src='../js/jquery.min.js'></script>
+    <script type="text/javascript" src="../js/script.js"></script>
+    <script type="text/javascript" src="../js/echarts.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px;"></div>
+
+<script type="text/javascript">
+    var chartDom = document.getElementById('main');
+    var myChart = echarts.init(chartDom);
+
+    var option = {
+        tooltip: {},
+        grid: [{top:'60%', bottom: '15%'},{top: '10%', bottom: '60%'}],
+        dataset: {
+            source: [
+                ['date', 'earn', 'rate'],
+                ['2021-05-06', 100, 0.01],
+                ['2021-05-07', -100, 0.02],
+                ['2021-05-08', 200, -0.03],
+                ['2021-05-09', -150, 0.04],
+                ['2021-05-11', -10, 0.1],
+            ]
+        },
+
+        xAxis: [{type: 'category', gridIndex: 0}, {type: 'category', gridIndex: 1}],
+        yAxis: [{type: 'value', gridIndex: 0}, {type: 'value', gridIndex: 1}],
+        legend:[{data:['earn', 'rate']}],
+        dataZoom:
+            [
+                {
+
+                    type: 'slider',
+                    show: true,
+                    start: 50,
+                    end: 100,
+                    xAxisIndex: [0],
+                },
+                {
+                    type: 'inside',
+                    start: 50,
+                    end: 100,
+                    xAxisIndex:[0]
+                },
+                {
+                    top:'50%',
+                    type: 'slider',
+                    show: true,
+                    start: 50,
+                    end: 100,
+                    xAxisIndex: [1],
+                },
+                {
+                    type: 'inside',
+                    start: 50,
+                    end: 100,
+                    xAxisIndex:[1]
+                }
+            ],
+        series: [
+            {
+                name:'earn',
+                type: 'bar',
+                xAxisIndex:0,
+                yAxisIndex:0,
+                //柱子宽度在item宽度的占比
+                barWidth: "30%",
+                itemStyle: {
+                    normal: {
+                        // color:'red'
+                        //柱子颜色
+                        color: function (params) {
+                            if (params.data[1] > 0) {
+                                return 'red';
+                            }else{
+                                return 'green';
+                            }
+                            return 'red'
+                        }
+                    }
+                },
+                encode: {
+                    x: 'date',
+                    y: 'earn'
+                }
+            },
+            {
+                name:'rate',
+                type: 'line',
+                xAxisIndex:1,
+                yAxisIndex:1,
+                //柱子宽度在item宽度的占比
+                barWidth: "30%",
+                itemStyle: {
+                    normal: {
+                        // color:'red'
+                        //柱子颜色
+                        color: function (params) {
+                            if (params.data[1] > 0) {
+                                return 'red';
+                            }else{
+                                return 'green';
+                            }
+                            return 'red'
+                        }
+                    }
+                },
+                encode: {
+                    x: 'date',
+                    y: 'rate'
+                }
+            }
+
+        ]
+    };
+
+    option && myChart.setOption(option);
+</script>
+</body>
+</html>

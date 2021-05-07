@@ -9,89 +9,90 @@
 
 <!--核心样式-->
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-
+<script src='../js/jquery.min.js'></script>
+<script src="../js/script.js"></script>
 </head>
 <body>
+
 
 <div class="container">
   <div class="card"></div>
   <div class="card">
     <h1 class="title">用户登录</h1>
-    <form role="form">
+    <form role="form" id="form" onsubmit="return false" action="##" method="post">
       <div class="input-container">
         <input type="text" id="name" name="name" required="required" />
-        <label for="#{label}">用户名</label>
+        <label for="name">用户名</label>
         <div class="bar"></div>
       </div>
       <div class="input-container">
         <input type="password" id="password" name="password" required="required" />
-        <label for="#{label}">密码</label>
+        <label for="password">密码</label>
         <div class="bar"></div>
       </div>
       <div class="button-container">
-        <button type="submit" id= "login" value="登录">登录</button>
+        <button type="submit" id= "login" value="登录" >登录</button>
       </div>
     </form>
   </div>
-  <div class="card alt">
-    <div class="toggle"></div>
-    <h1 class="title">会员注册
-      <div class="close"></div>
-    </h1>
-    <form>
-      <div class="input-container">
-        <input type="#{type}" id="#{label}" required="required" />
-        <label for="#{label}">用户名</label>
-        <div class="bar"></div>
-      </div>
-      <div class="input-container">
-        <input type="#{type}" id="#{label}" required="required" />
-        <label for="#{label}">密码</label>
-        <div class="bar"></div>
-      </div>
-      <div class="input-container">
-        <input type="#{type}" id="#{label}" required="required" />
-        <label for="#{label}">确认密码</label>
-        <div class="bar"></div>
-      </div>
-      <div class="button-container">
-        <button><span>提交注册</span></button>
-      </div>
-    </form>
-  </div>
-</div>
 
-<script>
-  $('#login').on('click', function () {
-    alert("1111");
-    var name = $("#name").val();
-    var password = $("#password").val();
-    var param = {
-      name: name,
-      password: password
-    };
-    $.ajax({
-      url: "/loginIn",
-      type: "post",
-      dataType: "json",
-      async: false,
-      data: param,
-      success: function (result) {
-        alert("success");
-        if (result.retCode == '000000') {
-          location.href = "success";
-        } else {
-          alert("账号或密码错误");
-          $('#password').clear();
+  <script type="text/javascript">
+    $('#login').on('click', function () {
+      var name = $("#name").val();
+      var password = $("#password").val();
+      var param = {
+        name: name,
+        password: password
+      };
+      $.ajax({
+        url: "/loginIn",
+        type: "post",
+        dataType: "json",
+        async: false,
+        data: param,
+        success: function (result) {
+          alert("success");
+          if (result.retCode == '000000') {
+            location.href = "data_show";
+          } else {
+            alert("账号或密码错误");
+            $('#password').clear();
+          }
+        },
+        error: function () {
+          alert("error");
         }
-      }
-    })
-  });
-</script>
+      });
+    });
+  </script>
 
-<script src='../js/jquery.min.js'></script>
-<script src="../js/script.js"></script>
-
+<!--  <div class="card alt">-->
+<!--    <div class="toggle"></div>-->
+<!--    <h1 class="title">会员注册-->
+<!--      <div class="close"></div>-->
+<!--    </h1>-->
+<!--    <form>-->
+<!--      <div class="input-container">-->
+<!--        <input type="#{type}" id="#{label}" required="required" />-->
+<!--        <label for="#{label}">用户名</label>-->
+<!--        <div class="bar"></div>-->
+<!--      </div>-->
+<!--      <div class="input-container">-->
+<!--        <input type="#{type}" id="#{label}" required="required" />-->
+<!--        <label for="#{label}">密码</label>-->
+<!--        <div class="bar"></div>-->
+<!--      </div>-->
+<!--      <div class="input-container">-->
+<!--        <input type="#{type}" id="#{label}" required="required" />-->
+<!--        <label for="#{label}">确认密码</label>-->
+<!--        <div class="bar"></div>-->
+<!--      </div>-->
+<!--      <div class="button-container">-->
+<!--        <button><span>提交注册</span></button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+</div>
 </body>
 </html>
 

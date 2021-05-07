@@ -25,6 +25,12 @@ public class LoginController {
     public String index_show(){
         return "index";
     }
+
+    @RequestMapping("/data_show")
+    public String success_show(){
+        return "data_show";
+    }
+
     @RequestMapping(value = "/loginIn",method = RequestMethod.POST)
     @ResponseBody
     public LogInResult login(String name, String password){

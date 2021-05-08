@@ -1,10 +1,10 @@
 
 spring:
   datasource:
-    name: bogeshare
-    url: jdbc:mysql://localhost:3306/bogeshare?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    name: share
+    url: jdbc:mysql://localhost:3306/share?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
-    password: GC.LJS0217
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
   mvc:
     view:

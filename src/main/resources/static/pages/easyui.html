@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Client Side Pagination in DataGrid - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+	<script type="text/javascript" src="../easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+	<h2>Client Side Pagination in DataGrid</h2>
+	<p>This sample shows how to implement client side pagination in DataGrid.</p>
+	<div style="margin:20px 0;"></div>
+	<script type="text/javascript">
+		$(function(jsonArray) {
+			$('#TestDatagrid').datagrid({
+				title : 'datagrid实例',
+				iconCls : 'icon-ok',
+				width : 600,
+				pageSize : 10,//默认选择的分页是每页5行数据
+				pageList : [10,20 ],//可以选择的分页集合
+				nowrap : true,//设置为true，当数据长度超出列宽时将会自动截取
+				// striped : true,//设置为true将交替显示行背景。
+				// collapsible : true,//显示可折叠按钮
+				// toolbar:"#tb",//在添加 增添、删除、修改操作的按钮要用到这个
+				url:'/getAllData',//url调用Action方法
+				method : 'post',
+				loadMsg : '数据装载中......',
+				singleSelect:true,//为true时只能选择单行
+				// fitColumns:true,//允许表格自动缩放，以适应父容器
+				remoteSort : false,
+				pagination : true,//分页
+				rownumbers : true //行数
+			})
+		});
+	</script>
+	<table id="TestDatagrid" class="easyui-datagrid"
+		   data-options="toolbar:'datagrid_toolbar', singleSelect:true" >
+		<thead>
+		<tr>
+			<th data-options="field:'id', align:'center', width: '33%'">id</th>
+			<th data-options="field:'name', align:'center',width: '33%'">name</th>
+			<th data-options="field:'password', align:'center',width: '33%'">password</th>
+		</tr>
+		</thead>
+	</table>
+
+<!--	-->
+<!--	<table id="dg" title="Client Side Pagination" style="width:700px;height:300px" data-options="-->
+<!--				rownumbers:true,-->
+<!--				singleSelect:true,-->
+<!--				autoRowHeight:false,-->
+<!--				pagination:true,-->
+<!--				pageSize:10">-->
+<!--		<thead>-->
+<!--			<tr>-->
+<!--				<th field="id" width="80">id</th>-->
+<!--				<th field="user" width="80">user</th>-->
+<!--				<th field="password" width="80">password</th>-->
+<!--			</tr>-->
+<!--		</thead>-->
+<!--	</table>-->
+<!--	<script>-->
+<!--		(function($){-->
+<!--			function pagerFilter(data){-->
+<!--				if ($.isArray(data)){	// is array-->
+<!--					data = {-->
+<!--						total: data.length,-->
+<!--						rows: data-->
+<!--					}-->
+<!--				}-->
+<!--				var target = this;-->
+<!--				var dg = $(target);-->
+<!--				var state = dg.data('datagrid');-->
+<!--				var opts = dg.datagrid('options');-->
+<!--				if (!state.allRows){-->
+<!--					state.allRows = (data.rows);-->
+<!--				}-->
+<!--				if (!opts.remoteSort && opts.sortName){-->
+<!--					var names = opts.sortName.split(',');-->
+<!--					var orders = opts.sortOrder.split(',');-->
+<!--					state.allRows.sort(function(r1,r2){-->
+<!--						var r = 0;-->
+<!--						for(var i=0; i<names.length; i++){-->
+<!--							var sn = names[i];-->
+<!--							var so = orders[i];-->
+<!--							var col = $(target).datagrid('getColumnOption', sn);-->
+<!--							var sortFunc = col.sorter || function(a,b){-->
+<!--								return a==b ? 0 : (a>b?1:-1);-->
+<!--							};-->
+<!--							r = sortFunc(r1[sn], r2[sn]) * (so=='asc'?1:-1);-->
+<!--							if (r != 0){-->
+<!--								return r;-->
+<!--							}-->
+<!--						}-->
+<!--						return r;-->
+<!--					});-->
+<!--				}-->
+<!--				var start = (opts.pageNumber-1)*parseInt(opts.pageSize);-->
+<!--				var end = start + parseInt(opts.pageSize);-->
+<!--				data.rows = state.allRows.slice(start, end);-->
+<!--				return data;-->
+<!--			}-->
+
+<!--			var loadDataMethod = $.fn.datagrid.methods.loadData;-->
+<!--			var deleteRowMethod = $.fn.datagrid.methods.deleteRow;-->
+<!--			$.extend($.fn.datagrid.methods, {-->
+<!--				clientPaging: function(jq){-->
+<!--					return jq.each(function(){-->
+<!--						var dg = $(this);-->
+<!--                        var state = dg.data('datagrid');-->
+<!--                        var opts = state.options;-->
+<!--                        opts.loadFilter = pagerFilter;-->
+<!--                        var onBeforeLoad = opts.onBeforeLoad;-->
+<!--                        opts.onBeforeLoad = function(param){-->
+<!--                            state.allRows = null;-->
+<!--                            return onBeforeLoad.call(this, param);-->
+<!--                        }-->
+<!--                        var pager = dg.datagrid('getPager');-->
+<!--						pager.pagination({-->
+<!--							onSelectPage:function(pageNum, pageSize){-->
+<!--								opts.pageNumber = pageNum;-->
+<!--								opts.pageSize = pageSize;-->
+<!--								pager.pagination('refresh',{-->
+<!--									pageNumber:pageNum,-->
+<!--									pageSize:pageSize-->
+<!--								});-->
+<!--								dg.datagrid('loadData',state.allRows);-->
+<!--							}-->
+<!--						});-->
+<!--                        $(this).datagrid('loadData', state.data);-->
+<!--                        if (opts.url){-->
+<!--                        	$(this).datagrid('reload');-->
+<!--                        }-->
+<!--					});-->
+<!--				},-->
+<!--                loadData: function(jq, data){-->
+<!--                    jq.each(function(){-->
+<!--                        $(this).data('datagrid').allRows = null;-->
+<!--                    });-->
+<!--                    return loadDataMethod.call($.fn.datagrid.methods, jq, data);-->
+<!--                },-->
+<!--                deleteRow: function(jq, index){-->
+<!--                	return jq.each(function(){-->
+<!--                		var row = $(this).datagrid('getRows')[index];-->
+<!--                		deleteRowMethod.call($.fn.datagrid.methods, $(this), index);-->
+<!--                		var state = $(this).data('datagrid');-->
+<!--                		if (state.options.loadFilter == pagerFilter){-->
+<!--                			for(var i=0; i<state.allRows.length; i++){-->
+<!--                				if (state.allRows[i] == row){-->
+<!--                					state.allRows.splice(i,1);-->
+<!--                					break;-->
+<!--                				}-->
+<!--                			}-->
+<!--                			$(this).datagrid('loadData', state.allRows);-->
+<!--                		}-->
+<!--                	});-->
+<!--                },-->
+<!--                getAllRows: function(jq){-->
+<!--                	return jq.data('datagrid').allRows;-->
+<!--                }-->
+<!--			})-->
+<!--		})(jQuery);-->
+
+<!--		function getData(){-->
+<!--			var rows = [];-->
+<!--			$.ajax({-->
+<!--				url: "/getAllData",-->
+<!--				type: "post",-->
+<!--				dataType: "json",-->
+<!--				async: false,-->
+<!--				data: param,-->
+<!--				success: function (result) {-->
+
+
+<!--					if (result.retCode == '000000') {-->
+<!--						location.href = "data_show";-->
+<!--					} else {-->
+<!--						alert("账号或密码错误");-->
+<!--						$('#password').clear();-->
+<!--					}-->
+<!--				},-->
+<!--				error: function () {-->
+<!--					alert("error");-->
+<!--				}-->
+<!--			});-->
+<!--			return rows;-->
+<!--		}-->
+
+
+
+<!--		$(function(){-->
+<!--			$('#dg').datagrid({-->
+<!--				data:-->
+
+<!--			)}-->
+<!--			$('#dg').datagrid({data:getData()}).datagrid('clientPaging');-->
+<!--		});-->
+<!--	</script>-->
+</body>
+</html>

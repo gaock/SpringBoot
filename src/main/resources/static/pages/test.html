@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <title>TRAFFIC</title>
+    <style>
+        #main{
+            width: 50%;
+            height:300px;
+        }
+        #main2{
+            width: 50%;
+            height:300px;
+        }
+    </style>
+    <script type="text/javascript" src="../js/echarts.js"></script>
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body style="height: 100%; margin: 0;min-width: 1420px;min-height: 800px">
+<div id="main"></div>
+<div id="main2"></div>
+<script>
+    //dataZoom组件有start和end属性，假如你有100个数据，设置start:30,end:80,那么对应的图表就会显示第30~80个数据
+    //本例子的两个图表联动主要原理是当表1数据开始伸缩时，
+    // 通过'dataZoom'事件抓取当前dataZoom的starValue、endValue或者startPercent,endPercent，
+    // 然后把表2的dataZoom设置成同样的starValue、endValue或者startPercent,endPercent
+    var traffic = echarts.init(document.getElementById("main"));
+    var traffic2 = echarts.init(document.getElementById("main2"));
+ 
+    var data = [];
+    var now = +new Date(1997, 9, 3,9,30,30);
+    var oneDay = 600 * 1000;
+ 
+    function randomData() {
+        now = new Date(+now + oneDay);
+        value =  Math.random() * 80 + 20;
+        return {
+            name: now.toLocaleString('chinese',{hour12:false}),
+            value: [
+                now.toLocaleString('chinese',{hour12:false}),
+                Math.round(value)
+            ]
+ 
+        }
+    }
+ 
+    for (var i = 0; i < 100; i++) {
+        data.push(randomData());
+    }
+ 
+    // console.log(data);
+ 
+    var option1 = {
+        title: {
+            text: '在此图表中滚动鼠标'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                var date = new Date(params.name);
+                return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        dataZoom: [
+            {
+                type:'inside',
+                show: true,
+            },
+            {
+                type:'slider',
+                show: true,
+                start: '0',
+                end:'50',
+            },
+        ],
+        series: [{
+            name: '模拟数据',
+            type: 'line',
+            data: data
+        }]
+    };
+ 
+    var option2 = {
+        title: {
+            text: '此图表对应上面的一起变化'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                var date = new Date(params.name);
+                return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        dataZoom: [
+            {
+                type:'inside',
+                show: true,
+                start: 0,
+                end: 100,
+            },
+            {
+                type:'slider',
+                show: true,
+                start: 0,
+                end: 100,
+            },
+        ],
+        series: [{
+            name: '模拟数据',
+            type: 'line',
+            data: data
+        }]
+    };
+ 
+    traffic.setOption(option1);
+    traffic2.setOption(option2);
+ 
+    traffic.on('datazoom', function (params){
+        // 事件有很多，参见http://echarts.baidu.com/api.html#events
+        //params是个好东西，里面有什么，可以打印出来看一下就明白
+        console.log(params);
+        //可以通过params获取缩放的起止百分比，但是鼠标滚轮和伸缩条拖动触发的params格式不同，所以用另一种方法
+        //获得图表数据数组下标
+        var startValue = traffic.getModel().option.dataZoom[0].startValue;
+        var endValue = traffic.getModel().option.dataZoom[0].endValue;
+        //获得起止位置百分比
+        var startPercent = traffic.getModel().option.dataZoom[0].start;
+        var endPercent = traffic.getModel().option.dataZoom[0].end;
+ 
+        console.log(startValue,endValue,startPercent,endPercent);
+ 
+        option2.dataZoom[0].start = startPercent;
+        option2.dataZoom[0].end = endPercent;
+        traffic2.setOption(option2);
+ 
+    });
+ 
+    window.onresize = function () {
+        traffic.resize();
+        traffic2.resize();
+    };
+</script>
+</body>
+</html>

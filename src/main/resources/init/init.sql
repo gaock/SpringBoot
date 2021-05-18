@@ -11,6 +11,12 @@ create table earn_info(
     used_rate varchar(50) not null
 );
 
+insert into earn_info(date, earn_rate, hs_300, comp_rate, used_rate)
+values('2021-5-18', '0.03', '-0.01', '0.04', '0.99');
+
+select * from earn_info;
+
+
 # 最近最优表
 create table last_best_tic_info(
 	id int primary key auto_increment,
@@ -21,7 +27,12 @@ create table last_best_tic_info(
     earn_rate varchar(50),
     used_date int
 );
-# 交易信号
+
+insert into last_best_tic_info(t_id, name,buy_price , sold_pric, earn_rate, used_date)
+values('sz0002123', '测试xxxxxxx有限公司', '12.23', '14.15', '0.14', 3);
+select * from last_best_tic_info;
+
+
 create table tran_sig(
 	id int primary key auto_increment,
     date date,
@@ -34,11 +45,19 @@ create table tran_sig(
     tran_earn varchar(50),
     mid_money varchar(50)
 );
+insert into tran_sig(date, t_id, name, op , num, simple_price, really_price, tran_earn, mid_money)
+values('2021-05-18', 'sz00002121', '测试***8sdasdsa', '买' ,'1000000', '14.41', '14.21', '', '10');
+select * from tran_sig;
 
-# 账户盈余信息
+
 create table acct_info(
 	date date primary key not null,
     total_money varchar(50),
     tic_money varchar(50),
     cash varchar(50)
-)
+);
+insert into acct_info(date, total_money, tic_money, cash)
+values('2021-05-18', '1231321.21', '10213.31', '111111');
+select * from acct_info;
+
+

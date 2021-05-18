@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.bean.dao.AcctInfoDao">
+
+    <resultMap type="com.example.test.bean.entity.AcctInfo" id="AcctInfoMap">
+        <result property="date" column="date" jdbcType="VARCHAR"/>
+        <result property="totalMoney" column="total_money" jdbcType="VARCHAR"/>
+        <result property="ticMoney" column="tic_money" jdbcType="VARCHAR"/>
+        <result property="cash" column="cash" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="AcctInfoMap">
+        select
+          date, total_money, tic_money, cash
+        from share.acct_info
+        where date = #{date}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="AcctInfoMap">
+        select
+          date, total_money, tic_money, cash
+        from share.acct_info
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="AcctInfoMap">
+        select
+        date, total_money, tic_money, cash
+        from share.acct_info
+        <where>
+            <if test="date != null and date != ''">
+                and date = #{date}
+            </if>
+            <if test="totalMoney != null and totalMoney != ''">
+                and total_money = #{totalMoney}
+            </if>
+            <if test="ticMoney != null and ticMoney != ''">
+                and tic_money = #{ticMoney}
+            </if>
+            <if test="cash != null and cash != ''">
+                and cash = #{cash}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="date" useGeneratedKeys="true">
+        insert into share.acct_info(total_money, tic_money, cash)
+        values (#{totalMoney}, #{ticMoney}, #{cash})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="date" useGeneratedKeys="true">
+        insert into share.acct_info(total_money, tic_money, cash)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.totalMoney}, #{entity.ticMoney}, #{entity.cash})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="date" useGeneratedKeys="true">
+        insert into share.acct_info(total_money, tic_money, cash)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.totalMoney}, #{entity.ticMoney}, #{entity.cash})
+        </foreach>
+        on duplicate key update
+        total_money = values(total_money) , tic_money = values(tic_money) , cash = values(cash)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update share.acct_info
+        <set>
+            <if test="totalMoney != null and totalMoney != ''">
+                total_money = #{totalMoney},
+            </if>
+            <if test="ticMoney != null and ticMoney != ''">
+                tic_money = #{ticMoney},
+            </if>
+            <if test="cash != null and cash != ''">
+                cash = #{cash},
+            </if>
+        </set>
+        where date = #{date}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from share.acct_info where date = #{date}
+    </delete>
+
+</mapper>
+

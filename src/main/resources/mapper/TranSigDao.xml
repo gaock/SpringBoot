@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.bean.dao.TranSigDao">
+
+    <resultMap type="com.example.test.bean.entity.TranSig" id="TranSigMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="date" column="date" jdbcType="VARCHAR"/>
+        <result property="tId" column="t_id" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="op" column="op" jdbcType="VARCHAR"/>
+        <result property="num" column="num" jdbcType="INTEGER"/>
+        <result property="simplePrice" column="simple_price" jdbcType="VARCHAR"/>
+        <result property="reallyPrice" column="really_price" jdbcType="VARCHAR"/>
+        <result property="tranEarn" column="tran_earn" jdbcType="VARCHAR"/>
+        <result property="midMoney" column="mid_money" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TranSigMap">
+        select
+          id, date, t_id, name, op, num, simple_price, really_price, tran_earn, mid_money
+        from share.tran_sig
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TranSigMap">
+        select
+          id, date, t_id, name, op, num, simple_price, really_price, tran_earn, mid_money
+        from share.tran_sig
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="TranSigMap">
+        select
+        id, date, t_id, name, op, num, simple_price, really_price, tran_earn, mid_money
+        from share.tran_sig
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="date != null and date != ''">
+                and date = #{date}
+            </if>
+            <if test="tId != null and tId != ''">
+                and t_id = #{tId}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="op != null and op != ''">
+                and op = #{op}
+            </if>
+            <if test="num != null">
+                and num = #{num}
+            </if>
+            <if test="simplePrice != null and simplePrice != ''">
+                and simple_price = #{simplePrice}
+            </if>
+            <if test="reallyPrice != null and reallyPrice != ''">
+                and really_price = #{reallyPrice}
+            </if>
+            <if test="tranEarn != null and tranEarn != ''">
+                and tran_earn = #{tranEarn}
+            </if>
+            <if test="midMoney != null and midMoney != ''">
+                and mid_money = #{midMoney}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into share.tran_sig(date, t_id, name, op, num, simple_price, really_price, tran_earn, mid_money)
+        values (#{date}, #{tId}, #{name}, #{op}, #{num}, #{simplePrice}, #{reallyPrice}, #{tranEarn}, #{midMoney})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into share.tran_sig(date, t_id, name, op, num, simple_price, really_price, tran_earn, mid_money)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.date}, #{entity.tId}, #{entity.name}, #{entity.op}, #{entity.num}, #{entity.simplePrice},
+            #{entity.reallyPrice}, #{entity.tranEarn}, #{entity.midMoney})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into share.tran_sig(date, t_id, name, op, num, simple_price, really_price, tran_earn, mid_money)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.date}, #{entity.tId}, #{entity.name}, #{entity.op}, #{entity.num}, #{entity.simplePrice},
+            #{entity.reallyPrice}, #{entity.tranEarn}, #{entity.midMoney})
+        </foreach>
+        on duplicate key update
+        date = values(date) , t_id = values(t_id) , name = values(name) , op = values(op) , num = values(num) ,
+        simple_price = values(simple_price) , really_price = values(really_price) , tran_earn = values(tran_earn) ,
+        mid_money = values(mid_money)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update share.tran_sig
+        <set>
+            <if test="date != null and date != ''">
+                date = #{date},
+            </if>
+            <if test="tId != null and tId != ''">
+                t_id = #{tId},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="op != null and op != ''">
+                op = #{op},
+            </if>
+            <if test="num != null">
+                num = #{num},
+            </if>
+            <if test="simplePrice != null and simplePrice != ''">
+                simple_price = #{simplePrice},
+            </if>
+            <if test="reallyPrice != null and reallyPrice != ''">
+                really_price = #{reallyPrice},
+            </if>
+            <if test="tranEarn != null and tranEarn != ''">
+                tran_earn = #{tranEarn},
+            </if>
+            <if test="midMoney != null and midMoney != ''">
+                mid_money = #{midMoney},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from share.tran_sig where id = #{id}
+    </delete>
+
+</mapper>
+

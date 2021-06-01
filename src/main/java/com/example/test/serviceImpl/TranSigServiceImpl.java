@@ -1,8 +1,8 @@
-package com.example.test.bean.service.impl;
+package com.example.test.serviceImpl;
 
-import com.example.test.bean.entity.TranSig;
-import com.example.test.bean.dao.TranSigDao;
-import com.example.test.bean.service.TranSigService;
+import com.example.test.bean.TranSig;
+import com.example.test.dao.TranSigDao;
+import com.example.test.service.TranSigService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +12,7 @@ import java.util.List;
  * (TranSig)表服务实现类
  *
  * @author makejava
- * @since 2021-06-01 16:37:44
+ * @since 2021-05-18 17:58:14
  */
 @Service("tranSigService")
 public class TranSigServiceImpl implements TranSigService {

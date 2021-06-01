@@ -1,4 +1,4 @@
-package com.example.test.bean.entity;
+package com.example.test.bean;
 
 import java.io.Serializable;
 
@@ -6,10 +6,10 @@ import java.io.Serializable;
  * (LastBestTicInfo)实体类
  *
  * @author makejava
- * @since 2021-06-01 16:37:42
+ * @since 2021-05-18 17:58:13
  */
 public class LastBestTicInfo implements Serializable {
-    private static final long serialVersionUID = -35488138152782278L;
+    private static final long serialVersionUID = -77100153588244564L;
 
     private Integer id;
 

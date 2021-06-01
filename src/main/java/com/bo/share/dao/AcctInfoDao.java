@@ -1,6 +1,6 @@
-package com.example.test.bean.dao;
+package com.bo.share.dao;
 
-import com.example.test.bean.entity.AcctInfo;
+import com.bo.share.entity.AcctInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
  * (AcctInfo)表数据库访问层
  *
  * @author makejava
- * @since 2021-05-18 17:58:07
+ * @since 2021-06-01 16:37:20
  */
 public interface AcctInfoDao {
 

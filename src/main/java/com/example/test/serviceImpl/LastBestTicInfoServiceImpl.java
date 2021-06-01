@@ -1,8 +1,8 @@
-package com.example.test.bean.service.impl;
+package com.example.test.serviceImpl;
 
-import com.example.test.bean.entity.LastBestTicInfo;
-import com.example.test.bean.dao.LastBestTicInfoDao;
-import com.example.test.bean.service.LastBestTicInfoService;
+import com.example.test.bean.LastBestTicInfo;
+import com.example.test.dao.LastBestTicInfoDao;
+import com.example.test.service.LastBestTicInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +12,7 @@ import java.util.List;
  * (LastBestTicInfo)表服务实现类
  *
  * @author makejava
- * @since 2021-06-01 16:37:42
+ * @since 2021-05-18 17:58:13
  */
 @Service("lastBestTicInfoService")
 public class LastBestTicInfoServiceImpl implements LastBestTicInfoService {

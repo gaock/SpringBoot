@@ -1,8 +1,8 @@
-package com.example.test.bean.service.impl;
+package com.bo.share.service.impl;
 
-import com.example.test.bean.entity.AcctInfo;
-import com.example.test.bean.dao.AcctInfoDao;
-import com.example.test.bean.service.AcctInfoService;
+import com.bo.share.entity.AcctInfo;
+import com.bo.share.dao.AcctInfoDao;
+import com.bo.share.service.AcctInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +12,7 @@ import java.util.List;
  * (AcctInfo)表服务实现类
  *
  * @author makejava
- * @since 2021-05-18 17:58:11
+ * @since 2021-06-01 16:37:22
  */
 @Service("acctInfoService")
 public class AcctInfoServiceImpl implements AcctInfoService {

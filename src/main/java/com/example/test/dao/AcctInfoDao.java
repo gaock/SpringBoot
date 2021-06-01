@@ -1,25 +1,25 @@
-package com.example.test.bean.dao;
+package com.example.test.dao;
 
-import com.example.test.bean.entity.TranSig;
+import com.example.test.bean.AcctInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
- * (TranSig)表数据库访问层
+ * (AcctInfo)表数据库访问层
  *
  * @author makejava
- * @since 2021-06-01 16:37:44
+ * @since 2021-05-18 17:58:07
  */
-public interface TranSigDao {
+public interface AcctInfoDao {
 
     /**
      * 通过ID查询单条数据
      *
-     * @param id 主键
+     * @param date 主键
      * @return 实例对象
      */
-    TranSig queryById(Integer id);
+    AcctInfo queryById(String date);
 
     /**
      * 查询指定行数据
@@ -28,56 +28,56 @@ public interface TranSigDao {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<TranSig> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<AcctInfo> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param tranSig 实例对象
+     * @param acctInfo 实例对象
      * @return 对象列表
      */
-    List<TranSig> queryAll(TranSig tranSig);
+    List<AcctInfo> queryAll(AcctInfo acctInfo);
 
     /**
      * 新增数据
      *
-     * @param tranSig 实例对象
+     * @param acctInfo 实例对象
      * @return 影响行数
      */
-    int insert(TranSig tranSig);
+    int insert(AcctInfo acctInfo);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *
-     * @param entities List<TranSig> 实例对象列表
+     * @param entities List<AcctInfo> 实例对象列表
      * @return 影响行数
      */
-    int insertBatch(@Param("entities") List<TranSig> entities);
+    int insertBatch(@Param("entities") List<AcctInfo> entities);
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
-     * @param entities List<TranSig> 实例对象列表
+     * @param entities List<AcctInfo> 实例对象列表
      * @return 影响行数
      */
-    int insertOrUpdateBatch(@Param("entities") List<TranSig> entities);
+    int insertOrUpdateBatch(@Param("entities") List<AcctInfo> entities);
 
     /**
      * 修改数据
      *
-     * @param tranSig 实例对象
+     * @param acctInfo 实例对象
      * @return 影响行数
      */
-    int update(TranSig tranSig);
+    int update(AcctInfo acctInfo);
 
     /**
      * 通过主键删除数据
      *
-     * @param id 主键
+     * @param date 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteById(String date);
 
 }
 

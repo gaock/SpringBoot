@@ -1,7 +1,7 @@
-package com.example.test.bean.controller;
+package com.bo.share.controller;
 
-import com.example.test.bean.entity.AcctInfo;
-import com.example.test.bean.service.AcctInfoService;
+import com.bo.share.entity.AcctInfo;
+import com.bo.share.service.AcctInfoService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -10,7 +10,7 @@ import javax.annotation.Resource;
  * (AcctInfo)表控制层
  *
  * @author makejava
- * @since 2021-05-18 17:58:12
+ * @since 2021-06-01 16:37:23
  */
 @RestController
 @RequestMapping("acctInfo")

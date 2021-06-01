@@ -1,4 +1,4 @@
-package com.example.test.mapper;
+package com.example.test.dao;
 
 import com.example.test.bean.UserBean;
 import org.apache.ibatis.annotations.Mapper;

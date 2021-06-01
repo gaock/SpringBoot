@@ -1,4 +1,4 @@
-package com.example.test.bean.entity;
+package com.example.test.bean;
 
 import java.io.Serializable;
 
@@ -6,10 +6,10 @@ import java.io.Serializable;
  * (TranSig)实体类
  *
  * @author makejava
- * @since 2021-06-01 16:37:44
+ * @since 2021-05-18 17:58:14
  */
 public class TranSig implements Serializable {
-    private static final long serialVersionUID = -20623314912914942L;
+    private static final long serialVersionUID = 440318690761528053L;
 
     private Integer id;
 

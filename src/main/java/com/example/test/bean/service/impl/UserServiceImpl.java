@@ -1,7 +1,7 @@
 package com.example.test.bean.service.impl;
 
-import com.example.test.bean.entity.User;
-import com.example.test.bean.dao.UserDao;
+import com.example.test.bean.User;
+import com.example.test.dao.UserDao;
 import com.example.test.bean.service.UserService;
 import org.springframework.stereotype.Service;
 

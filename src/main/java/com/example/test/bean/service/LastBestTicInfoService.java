@@ -8,7 +8,7 @@ import java.util.List;
  * (LastBestTicInfo)表服务接口
  *
  * @author makejava
- * @since 2021-05-18 17:58:13
+ * @since 2021-06-01 16:37:42
  */
 public interface LastBestTicInfoService {
 

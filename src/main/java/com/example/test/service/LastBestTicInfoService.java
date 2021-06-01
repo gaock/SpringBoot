@@ -1,16 +1,16 @@
-package com.example.test.bean.service;
+package com.example.test.service;
 
-import com.example.test.bean.entity.TranSig;
+import com.example.test.bean.LastBestTicInfo;
 
 import java.util.List;
 
 /**
- * (TranSig)表服务接口
+ * (LastBestTicInfo)表服务接口
  *
  * @author makejava
- * @since 2021-06-01 16:37:44
+ * @since 2021-05-18 17:58:13
  */
-public interface TranSigService {
+public interface LastBestTicInfoService {
 
     /**
      * 通过ID查询单条数据
@@ -18,7 +18,7 @@ public interface TranSigService {
      * @param id 主键
      * @return 实例对象
      */
-    TranSig queryById(Integer id);
+    LastBestTicInfo queryById(Integer id);
 
     /**
      * 查询多条数据
@@ -27,23 +27,23 @@ public interface TranSigService {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<TranSig> queryAllByLimit(int offset, int limit);
+    List<LastBestTicInfo> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
      *
-     * @param tranSig 实例对象
+     * @param lastBestTicInfo 实例对象
      * @return 实例对象
      */
-    TranSig insert(TranSig tranSig);
+    LastBestTicInfo insert(LastBestTicInfo lastBestTicInfo);
 
     /**
      * 修改数据
      *
-     * @param tranSig 实例对象
+     * @param lastBestTicInfo 实例对象
      * @return 实例对象
      */
-    TranSig update(TranSig tranSig);
+    LastBestTicInfo update(LastBestTicInfo lastBestTicInfo);
 
     /**
      * 通过主键删除数据

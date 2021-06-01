@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.test.bean.dao.AcctInfoDao">
+<mapper namespace="com.example.test.dao.AcctInfoDao">
 
-    <resultMap type="com.example.test.bean.entity.AcctInfo" id="AcctInfoMap">
+    <resultMap type="com.example.test.bean.AcctInfo" id="AcctInfoMap">
         <result property="date" column="date" jdbcType="VARCHAR"/>
         <result property="totalMoney" column="total_money" jdbcType="VARCHAR"/>
         <result property="ticMoney" column="tic_money" jdbcType="VARCHAR"/>

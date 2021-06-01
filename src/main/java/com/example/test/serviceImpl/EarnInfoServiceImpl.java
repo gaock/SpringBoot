@@ -1,8 +1,8 @@
-package com.example.test.bean.service.impl;
+package com.example.test.serviceImpl;
 
-import com.example.test.bean.entity.EarnInfo;
-import com.example.test.bean.dao.EarnInfoDao;
-import com.example.test.bean.service.EarnInfoService;
+import com.example.test.bean.EarnInfo;
+import com.example.test.dao.EarnInfoDao;
+import com.example.test.service.EarnInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +12,7 @@ import java.util.List;
  * (EarnInfo)表服务实现类
  *
  * @author makejava
- * @since 2021-06-01 16:37:35
+ * @since 2021-05-18 17:58:13
  */
 @Service("earnInfoService")
 public class EarnInfoServiceImpl implements EarnInfoService {

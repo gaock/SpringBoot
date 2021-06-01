@@ -1,17 +1,17 @@
-package com.example.test.bean.dao;
+package com.example.test.dao;
 
-import com.example.test.bean.entity.LastBestTicInfo;
+import com.example.test.bean.TranSig;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
- * (LastBestTicInfo)表数据库访问层
+ * (TranSig)表数据库访问层
  *
  * @author makejava
- * @since 2021-06-01 16:37:42
+ * @since 2021-05-18 17:58:14
  */
-public interface LastBestTicInfoDao {
+public interface TranSigDao {
 
     /**
      * 通过ID查询单条数据
@@ -19,7 +19,7 @@ public interface LastBestTicInfoDao {
      * @param id 主键
      * @return 实例对象
      */
-    LastBestTicInfo queryById(Integer id);
+    TranSig queryById(Integer id);
 
     /**
      * 查询指定行数据
@@ -28,48 +28,48 @@ public interface LastBestTicInfoDao {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<LastBestTicInfo> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<TranSig> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param lastBestTicInfo 实例对象
+     * @param tranSig 实例对象
      * @return 对象列表
      */
-    List<LastBestTicInfo> queryAll(LastBestTicInfo lastBestTicInfo);
+    List<TranSig> queryAll(TranSig tranSig);
 
     /**
      * 新增数据
      *
-     * @param lastBestTicInfo 实例对象
+     * @param tranSig 实例对象
      * @return 影响行数
      */
-    int insert(LastBestTicInfo lastBestTicInfo);
+    int insert(TranSig tranSig);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *
-     * @param entities List<LastBestTicInfo> 实例对象列表
+     * @param entities List<TranSig> 实例对象列表
      * @return 影响行数
      */
-    int insertBatch(@Param("entities") List<LastBestTicInfo> entities);
+    int insertBatch(@Param("entities") List<TranSig> entities);
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
-     * @param entities List<LastBestTicInfo> 实例对象列表
+     * @param entities List<TranSig> 实例对象列表
      * @return 影响行数
      */
-    int insertOrUpdateBatch(@Param("entities") List<LastBestTicInfo> entities);
+    int insertOrUpdateBatch(@Param("entities") List<TranSig> entities);
 
     /**
      * 修改数据
      *
-     * @param lastBestTicInfo 实例对象
+     * @param tranSig 实例对象
      * @return 影响行数
      */
-    int update(LastBestTicInfo lastBestTicInfo);
+    int update(TranSig tranSig);
 
     /**
      * 通过主键删除数据

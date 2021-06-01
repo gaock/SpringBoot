@@ -1,6 +1,6 @@
-package com.example.test.bean.controller;
+package com.example.test.controller;
 
-import com.example.test.bean.entity.User;
+import com.example.test.bean.User;
 import com.example.test.bean.service.UserService;
 import org.springframework.web.bind.annotation.*;
 

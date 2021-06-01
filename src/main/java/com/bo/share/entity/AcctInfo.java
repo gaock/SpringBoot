@@ -1,4 +1,4 @@
-package com.example.test.bean.entity;
+package com.bo.share.entity;
 
 import java.io.Serializable;
 
@@ -6,10 +6,10 @@ import java.io.Serializable;
  * (AcctInfo)实体类
  *
  * @author makejava
- * @since 2021-05-18 17:58:02
+ * @since 2021-06-01 16:37:18
  */
 public class AcctInfo implements Serializable {
-    private static final long serialVersionUID = 282112676107913922L;
+    private static final long serialVersionUID = 327883704979053852L;
 
     private String date;
 

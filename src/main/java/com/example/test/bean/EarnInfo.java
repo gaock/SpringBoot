@@ -1,4 +1,4 @@
-package com.example.test.bean.entity;
+package com.example.test.bean;
 
 import java.io.Serializable;
 
@@ -6,10 +6,10 @@ import java.io.Serializable;
  * (EarnInfo)实体类
  *
  * @author makejava
- * @since 2021-06-01 16:37:31
+ * @since 2021-05-18 17:58:12
  */
 public class EarnInfo implements Serializable {
-    private static final long serialVersionUID = -88785816373386211L;
+    private static final long serialVersionUID = -52819947136275642L;
 
     private String date;
 

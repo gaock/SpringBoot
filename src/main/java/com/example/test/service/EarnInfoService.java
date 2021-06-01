@@ -1,6 +1,6 @@
-package com.example.test.bean.service;
+package com.example.test.service;
 
-import com.example.test.bean.entity.EarnInfo;
+import com.example.test.bean.EarnInfo;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * (EarnInfo)表服务接口
  *
  * @author makejava
- * @since 2021-06-01 16:37:35
+ * @since 2021-05-18 17:58:13
  */
 public interface EarnInfoService {
 

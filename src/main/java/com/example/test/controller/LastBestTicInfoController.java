@@ -1,7 +1,7 @@
-package com.example.test.bean.controller;
+package com.example.test.controller;
 
-import com.example.test.bean.entity.LastBestTicInfo;
-import com.example.test.bean.service.LastBestTicInfoService;
+import com.example.test.bean.LastBestTicInfo;
+import com.example.test.service.LastBestTicInfoService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -10,7 +10,7 @@ import javax.annotation.Resource;
  * (LastBestTicInfo)表控制层
  *
  * @author makejava
- * @since 2021-06-01 16:37:42
+ * @since 2021-05-18 17:58:14
  */
 @RestController
 @RequestMapping("lastBestTicInfo")

@@ -1,7 +1,7 @@
-package com.example.test.bean.controller;
+package com.example.test.controller;
 
-import com.example.test.bean.entity.TranSig;
-import com.example.test.bean.service.TranSigService;
+import com.example.test.bean.TranSig;
+import com.example.test.service.TranSigService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -10,7 +10,7 @@ import javax.annotation.Resource;
  * (TranSig)表控制层
  *
  * @author makejava
- * @since 2021-06-01 16:37:45
+ * @since 2021-05-18 17:58:14
  */
 @RestController
 @RequestMapping("tranSig")

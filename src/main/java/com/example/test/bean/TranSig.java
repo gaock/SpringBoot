@@ -6,10 +6,10 @@ import java.io.Serializable;
  * (TranSig)实体类
  *
  * @author makejava
- * @since 2021-05-18 17:58:14
+ * @since 2021-06-01 16:44:33
  */
 public class TranSig implements Serializable {
-    private static final long serialVersionUID = 440318690761528053L;
+    private static final long serialVersionUID = -55124336800180419L;
 
     private Integer id;
 

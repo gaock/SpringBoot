@@ -1,7 +1,7 @@
 package com.example.test.serviceImpl;
 
 import com.example.test.bean.AcctInfo;
-import com.example.test.dao.*;
+import com.example.test.dao.AcctInfoDao;
 import com.example.test.service.AcctInfoService;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * (AcctInfo)表服务实现类
  *
  * @author makejava
- * @since 2021-05-18 17:58:11
+ * @since 2021-06-01 16:44:31
  */
 @Service("acctInfoService")
 public class AcctInfoServiceImpl implements AcctInfoService {

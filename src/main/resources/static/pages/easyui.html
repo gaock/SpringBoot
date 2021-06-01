@@ -9,11 +9,10 @@
 	<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
 </head>
 <body>
-	<h2>Client Side Pagination in DataGrid</h2>
-	<p>This sample shows how to implement client side pagination in DataGrid.</p>
+	<h2>user</h2>
 	<div style="margin:20px 0;"></div>
 	<script type="text/javascript">
-		$(function(jsonArray) {
+		$(function() {
 			$('#TestDatagrid').datagrid({
 				title : 'datagrid实例',
 				iconCls : 'icon-ok',
@@ -34,6 +33,28 @@
 				rownumbers : true //行数
 			})
 		});
+		$(function() {
+			$('#acct_info').datagrid({
+				title : 'acct_info',
+				iconCls : 'icon-ok',
+				width : 600,
+				pageSize : 10,//默认选择的分页是每页5行数据
+				pageList : [10,20 ],//可以选择的分页集合
+				nowrap : true,//设置为true，当数据长度超出列宽时将会自动截取
+				// striped : true,//设置为true将交替显示行背景。
+				// collapsible : true,//显示可折叠按钮
+				// toolbar:"#tb",//在添加 增添、删除、修改操作的按钮要用到这个
+				url:'/getAcctInfo',//url调用Action方法
+				method : 'post',
+				loadMsg : '数据装载中......',
+				singleSelect:true,//为true时只能选择单行
+				// fitColumns:true,//允许表格自动缩放，以适应父容器
+				remoteSort : false,
+				pagination : true,//分页
+				rownumbers : true, //行数
+				queryParams : {date: '2021-05-18'}
+			})
+		});
 	</script>
 	<table id="TestDatagrid" class="easyui-datagrid"
 		   data-options="toolbar:'datagrid_toolbar', singleSelect:true" >
@@ -46,7 +67,44 @@
 		</thead>
 	</table>
 
-<!--	-->
+	<h2>acct_info</h2>
+	<table id="acct_info" class="easyui-datagrid"
+		   data-options="toolbar:'datagrid_toolbar', singleSelect:true" >
+		<thead>
+		<tr>
+			<th data-options="field:'date', align:'center', width: '25%'">date</th>
+			<th data-options="field:'total_money', align:'center',width: '25%'">total_money</th>
+			<th data-options="field:'tic_money', align:'center',width: '25%'">tic_money</th>
+			<th data-options="field:'cash', align:'center',width: '25%'">cash</th>
+		</tr>
+		</thead>
+	</table>
+
+<!--	<h2>earn_info</h2>-->
+<!--	<table id="earn_info" class="easyui-datagrid"-->
+<!--		   data-options="toolbar:'datagrid_toolbar', singleSelect:true" >-->
+<!--		<thead>-->
+<!--		<tr>-->
+<!--			<th data-options="field:'id', align:'center', width: '33%'">id</th>-->
+<!--			<th data-options="field:'name', align:'center',width: '33%'">name</th>-->
+<!--			<th data-options="field:'password', align:'center',width: '33%'">password</th>-->
+<!--		</tr>-->
+<!--		</thead>-->
+<!--	</table>-->
+
+<!--	<h2>last_best</h2>-->
+<!--	<table id="last_best" class="easyui-datagrid"-->
+<!--		   data-options="toolbar:'datagrid_toolbar', singleSelect:true" >-->
+<!--		<thead>-->
+<!--		<tr>-->
+<!--			<th data-options="field:'id', align:'center', width: '33%'">id</th>-->
+<!--			<th data-options="field:'name', align:'center',width: '33%'">name</th>-->
+<!--			<th data-options="field:'password', align:'center',width: '33%'">password</th>-->
+<!--		</tr>-->
+<!--		</thead>-->
+<!--	</table>-->
+
+	<!--	-->
 <!--	<table id="dg" title="Client Side Pagination" style="width:700px;height:300px" data-options="-->
 <!--				rownumbers:true,-->
 <!--				singleSelect:true,-->

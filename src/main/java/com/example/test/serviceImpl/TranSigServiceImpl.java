@@ -12,7 +12,7 @@ import java.util.List;
  * (TranSig)表服务实现类
  *
  * @author makejava
- * @since 2021-05-18 17:58:14
+ * @since 2021-06-01 16:44:33
  */
 @Service("tranSigService")
 public class TranSigServiceImpl implements TranSigService {

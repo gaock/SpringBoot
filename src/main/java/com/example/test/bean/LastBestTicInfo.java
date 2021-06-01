@@ -6,10 +6,10 @@ import java.io.Serializable;
  * (LastBestTicInfo)实体类
  *
  * @author makejava
- * @since 2021-05-18 17:58:13
+ * @since 2021-06-01 16:44:32
  */
 public class LastBestTicInfo implements Serializable {
-    private static final long serialVersionUID = -77100153588244564L;
+    private static final long serialVersionUID = 746895427067728524L;
 
     private Integer id;
 

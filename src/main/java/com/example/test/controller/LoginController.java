@@ -1,24 +1,23 @@
 package com.example.test.controller;
 
+import com.example.test.service.AcctInfoService;
 import com.example.test.bean.BaseBean;
-import com.example.test.bean.PageBean;
 import com.example.test.bean.UserBean;
 import com.example.test.result.LogInResult;
 import com.example.test.service.UserService;
 import com.example.test.util.FormatJson;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,8 +25,10 @@ import java.util.stream.Collectors;
 public class LoginController {
 
     //将Service注入Web层
-    @Autowired
+    @Resource
     UserService userService;
+    @Resource
+    AcctInfoService acctInfoService;
 
 //    @Autowired
 //    FormatJson formatJson;
@@ -66,9 +67,24 @@ public class LoginController {
     @ResponseBody
     public void TT5(HttpServletRequest req, HttpServletResponse res) throws IOException, JSONException {
         System.out.println("-----------------");
+
         PrintWriter writer = res.getWriter();
         List<BaseBean> data = userService.getAllData().stream().map(s->(BaseBean)s).collect(Collectors.toList());
         FormatJson formatter = new FormatJson();
+        System.out.println("data: " + data);
         formatter.formatToResp(res, data);
     }
+
+//    @RequestMapping(value = "/getAcctInfo", method = RequestMethod.POST)
+//    @ResponseBody
+//    public void TT6(HttpServletRequest req, HttpServletResponse res) throws IOException, JSONException {
+//        PrintWriter writer = res.getWriter();
+//        String date = req.getParameter("date");
+//
+//        BaseBean acct = (BaseBean) this.acctInfoService.queryById(date);
+//        List<BaseBean> data = new ArrayList<>();
+//        data.add(acct);
+//        FormatJson formatter = new FormatJson();
+//        formatter.formatToResp(res, data);
+//    }
 }

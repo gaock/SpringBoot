@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.test.bean.dao.TranSigDao">
+<mapper namespace="com.example.test.dao.TranSigDao">
 
-    <resultMap type="com.example.test.bean.entity.TranSig" id="TranSigMap">
+    <resultMap type="com.example.test.bean.TranSig" id="TranSigMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="date" column="date" jdbcType="VARCHAR"/>
         <result property="tId" column="t_id" jdbcType="VARCHAR"/>

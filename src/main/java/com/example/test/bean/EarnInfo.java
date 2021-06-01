@@ -6,10 +6,10 @@ import java.io.Serializable;
  * (EarnInfo)实体类
  *
  * @author makejava
- * @since 2021-05-18 17:58:12
+ * @since 2021-06-01 16:44:31
  */
 public class EarnInfo implements Serializable {
-    private static final long serialVersionUID = -52819947136275642L;
+    private static final long serialVersionUID = -44465650030556904L;
 
     private String date;
 

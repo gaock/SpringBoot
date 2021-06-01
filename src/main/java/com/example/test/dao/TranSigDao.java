@@ -9,7 +9,7 @@ import java.util.List;
  * (TranSig)表数据库访问层
  *
  * @author makejava
- * @since 2021-05-18 17:58:14
+ * @since 2021-06-01 16:44:33
  */
 public interface TranSigDao {
 

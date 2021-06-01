@@ -6,13 +6,14 @@ import com.example.test.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     //将DAO注入Service层
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @Override

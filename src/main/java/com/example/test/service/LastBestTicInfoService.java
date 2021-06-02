@@ -30,6 +30,14 @@ public interface LastBestTicInfoService {
     List<LastBestTicInfo> queryAllByLimit(int offset, int limit);
 
     /**
+     * 查询多条数据
+     *
+     * @param limit  查询条数
+     * @return 对象列表
+     */
+    List<LastBestTicInfo> queryLastBest(int limit);
+
+    /**
      * 新增数据
      *
      * @param lastBestTicInfo 实例对象

@@ -1,6 +1,8 @@
 package com.example.test.bean;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * (EarnInfo)实体类
@@ -8,7 +10,7 @@ import java.io.Serializable;
  * @author makejava
  * @since 2021-06-01 16:44:31
  */
-public class EarnInfo implements Serializable {
+public class EarnInfo extends BaseBean implements Serializable {
     private static final long serialVersionUID = -44465650030556904L;
 
     private String date;
@@ -62,4 +64,14 @@ public class EarnInfo implements Serializable {
         this.usedRate = usedRate;
     }
 
+//    @Override
+//    public Map<String, String> getInfoMap() {
+//        HashMap<String, String> map = new HashMap<>();
+//        map.put("date", ""+ date);
+//        map.put("earnRate", earnRate);
+//        map.put("hs300", hs300);
+//        map.put("compRate", compRate);
+//        map.put("usedRate", usedRate);
+//        return map;
+//    }
 }

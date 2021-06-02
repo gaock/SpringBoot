@@ -31,6 +31,17 @@
         limit #{offset}, #{limit}
     </select>
 
+    <!--查询最后日期的数据-->
+    <select id="queryByDate" resultMap="TranSigMap">
+        select
+          id, date, t_id, name, op, num, simple_price, really_price, tran_earn, mid_money
+        from share.tran_sig
+        where date = (
+        select date from share.tran_sig order by id desc limit 1
+        )
+    </select>
+
+
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="TranSigMap">
         select

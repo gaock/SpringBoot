@@ -42,6 +42,17 @@ public class LastBestTicInfoServiceImpl implements LastBestTicInfoService {
         return this.lastBestTicInfoDao.queryAllByLimit(offset, limit);
     }
 
+
+    /**
+     * 查询多条数据
+     *
+     * @param limit  查询条数
+     * @return 对象列表
+     */
+    @Override
+    public List<LastBestTicInfo> queryLastBest(int limit) {
+        return this.lastBestTicInfoDao.queryLastBest(limit);
+    }
     /**
      * 新增数据
      *

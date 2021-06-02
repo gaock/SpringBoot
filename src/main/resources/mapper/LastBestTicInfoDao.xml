@@ -28,6 +28,15 @@
         limit #{offset}, #{limit}
     </select>
 
+    <!--查询指定行数据-->
+    <select id="queryLastBest" resultMap="LastBestTicInfoMap">
+        select
+          id, t_id, name, buy_price, sold_pric, earn_rate, used_date
+        from share.last_best_tic_info
+        order by id
+        limit #{limit}
+    </select>
+
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="LastBestTicInfoMap">
         select

@@ -57,13 +57,13 @@ public class AcctInfo extends BaseBean implements Serializable {
         this.cash = cash;
     }
 
-    @Override
-    public Map<String, String> getInfoMap() {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("date", ""+date);
-        map.put("totalMoney", totalMoney);
-        map.put("ticMoney", ticMoney);
-        map.put("cash", cash);
-        return map;
-    }
+//    @Override
+//    public Map<String, String> getInfoMap() {
+//        HashMap<String, String> map = new HashMap<>();
+//        map.put("date", ""+date);
+//        map.put("totalMoney", totalMoney);
+//        map.put("ticMoney", ticMoney);
+//        map.put("cash", cash);
+//        return map;
+//    }
 }

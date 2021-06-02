@@ -45,7 +45,6 @@ public class AcctInfoController {
     @RequestMapping(value = "/getAcctInfo", method = RequestMethod.POST)
     @ResponseBody
     public void TT6(HttpServletRequest req, HttpServletResponse res) throws IOException, JSONException {
-        PrintWriter writer = res.getWriter();
         String date = req.getParameter("date");
 
         BaseBean acct = (BaseBean) this.acctInfoService.queryById(date);

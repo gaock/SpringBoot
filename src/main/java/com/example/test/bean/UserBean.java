@@ -37,12 +37,12 @@ public class UserBean extends BaseBean implements Serializable {
         this.password = password;
     }
 
-    @Override
-    public Map<String, String> getInfoMap() {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("id", ""+id);
-        map.put("name", name);
-        map.put("password", password);
-        return map;
-    }
+//    @Override
+//    public Map<String, String> getInfoMap() {
+//        HashMap<String, String> map = new HashMap<>();
+//        map.put("id", ""+id);
+//        map.put("name", name);
+//        map.put("password", password);
+//        return map;
+//    }
 }

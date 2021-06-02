@@ -1,6 +1,8 @@
 package com.example.test.bean;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * (TranSig)实体类
@@ -8,7 +10,7 @@ import java.io.Serializable;
  * @author makejava
  * @since 2021-06-01 16:44:33
  */
-public class TranSig implements Serializable {
+public class TranSig extends BaseBean implements Serializable {
     private static final long serialVersionUID = -55124336800180419L;
 
     private Integer id;
@@ -112,4 +114,19 @@ public class TranSig implements Serializable {
         this.midMoney = midMoney;
     }
 
+//    @Override
+//    public Map<String, String> getInfoMap() {
+//        HashMap<String, String> map = new HashMap<>();
+//        map.put("id", ""+ id.toString());
+//        map.put("date", date);
+//        map.put("tId", tId);
+//        map.put("name", name);
+//        map.put("op", op);
+//        map.put("num", num.toString());
+//        map.put("simplePrice", simplePrice);
+//        map.put("reallyPrice", reallyPrice);
+//        map.put("tranEarn", tranEarn);
+//        map.put("midMoney", midMoney);
+//        return map;
+//    }
 }

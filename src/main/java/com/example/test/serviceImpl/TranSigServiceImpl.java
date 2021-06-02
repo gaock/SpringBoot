@@ -43,6 +43,17 @@ public class TranSigServiceImpl implements TranSigService {
     }
 
     /**
+     * 查询多条数据
+     *
+     * @param date  查询日期
+     * @return 对象列表
+     */
+    @Override
+    public List<TranSig> queryByDate(String date) {
+        return this.tranSigDao.queryByDate(date);
+    }
+
+    /**
      * 新增数据
      *
      * @param tranSig 实例对象

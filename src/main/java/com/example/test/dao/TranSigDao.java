@@ -30,7 +30,13 @@ public interface TranSigDao {
      */
     List<TranSig> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
-
+    /**
+     * 查询指定行数据
+     *
+     * @param date  日期
+     * @return 对象列表
+     */
+    List<TranSig> queryByDate(@Param("date") String date);
     /**
      * 通过实体作为筛选条件查询
      *

@@ -68,23 +68,10 @@ public class LoginController {
     public void TT5(HttpServletRequest req, HttpServletResponse res) throws IOException, JSONException {
         System.out.println("-----------------");
 
-        PrintWriter writer = res.getWriter();
         List<BaseBean> data = userService.getAllData().stream().map(s->(BaseBean)s).collect(Collectors.toList());
         FormatJson formatter = new FormatJson();
         System.out.println("data: " + data);
         formatter.formatToResp(res, data);
     }
 
-//    @RequestMapping(value = "/getAcctInfo", method = RequestMethod.POST)
-//    @ResponseBody
-//    public void TT6(HttpServletRequest req, HttpServletResponse res) throws IOException, JSONException {
-//        PrintWriter writer = res.getWriter();
-//        String date = req.getParameter("date");
-//
-//        BaseBean acct = (BaseBean) this.acctInfoService.queryById(date);
-//        List<BaseBean> data = new ArrayList<>();
-//        data.add(acct);
-//        FormatJson formatter = new FormatJson();
-//        formatter.formatToResp(res, data);
-//    }
 }

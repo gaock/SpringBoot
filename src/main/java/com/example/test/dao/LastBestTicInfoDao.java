@@ -30,6 +30,14 @@ public interface LastBestTicInfoDao {
      */
     List<LastBestTicInfo> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
+    /**
+     * 查询指定行数据
+     *
+     * @param limit  查询条数
+     * @return 对象列表
+     */
+    List<LastBestTicInfo> queryLastBest(@Param("limit") int limit);
+
 
     /**
      * 通过实体作为筛选条件查询

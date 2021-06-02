@@ -1,6 +1,8 @@
 package com.example.test.bean;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * (LastBestTicInfo)实体类
@@ -8,7 +10,7 @@ import java.io.Serializable;
  * @author makejava
  * @since 2021-06-01 16:44:32
  */
-public class LastBestTicInfo implements Serializable {
+public class LastBestTicInfo extends BaseBean implements Serializable {
     private static final long serialVersionUID = 746895427067728524L;
 
     private Integer id;
@@ -82,4 +84,16 @@ public class LastBestTicInfo implements Serializable {
         this.usedDate = usedDate;
     }
 
+//    @Override
+//    public Map<String, String> getInfoMap() {
+//        HashMap<String, String> map = new HashMap<>();
+//        map.put("id", ""+ id.toString());
+//        map.put("tId", tId);
+//        map.put("name", name);
+//        map.put("buyPrice", buyPrice);
+//        map.put("soldPric", soldPric);
+//        map.put("earnRate", earnRate);
+//        map.put("usedDate", usedDate.toString());
+//        return map;
+//    }
 }

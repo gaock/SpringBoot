@@ -30,6 +30,14 @@ public interface TranSigService {
     List<TranSig> queryAllByLimit(int offset, int limit);
 
     /**
+     * 查询多条数据
+     *
+     * @param date  查询日期
+     * @return 对象列表
+     */
+    List<TranSig> queryByDate(String date);
+
+    /**
      * 新增数据
      *
      * @param tranSig 实例对象
